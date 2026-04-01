@@ -1,6 +1,6 @@
 window.GS_A = true;
 window.GS_B = false;
-window.GS_C = false;
+window.GS_C = 0;
 
 setInterval(() => {
 	const runtime = cr_getC2Runtime();
@@ -24,10 +24,12 @@ setInterval(() => {
 			console.log("GAME LOST");
 			window.parent.postMessage({ evt: 'loss' });
 			window.location.reload();
+		} else {
+			window.GS_C = HP.data;
 		}
 	} else if (currScene === "MainMenu" && window.GS_B) {
 		console.log("GAME WON");
-		window.parent.postMessage({ evt: 'win' });
+		window.parent.postMessage({ evt: 'win', hp: GS_C });
 		document.getElementById("c2canvasdiv").remove();
 	} else if (currScene === "MainMenu") {
 		window.location.reload();
