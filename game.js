@@ -1,6 +1,19 @@
 window.GS_A = true;
 window.GS_B = false;
 window.GS_C = 0;
+window.GS_N = false;
+
+function overrideName(runtime) {
+	const name = new URLSearchParams(window.location.search).get("name");
+	if (!name || GS_N) return;
+
+	if (runtime) {
+		const nameVar = runtime.Gu?.find(a => a.name === "Name");
+		if (!nameVar) return;
+		nameVar.data = name;
+		nameVar.xm = name;
+	}
+}
 
 setInterval(() => {
 	const runtime = cr_getC2Runtime();
@@ -8,6 +21,7 @@ setInterval(() => {
 		console.log("No runtime available");
 		return;
 	}
+	overrideName(runtime);
 
 	const HP = runtime.Gu?.find(a => a.name === "HP");
 	if (!HP) {
@@ -35,3 +49,5 @@ setInterval(() => {
 		window.location.reload();
 	}
 }, 500);
+
+overrideName(cr_getC2Runtime());
