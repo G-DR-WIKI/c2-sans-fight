@@ -23,7 +23,7 @@ setInterval(() => {
 		if (HP.data <= 0) {
 			console.log("GAME LOST");
 			window.parent.postMessage({ evt: 'loss' });
-			window.GS_A = false;
+			window.location.reload();
 		}
 	} else if (currScene === "MainMenu" && window.GS_B) {
 		console.log("GAME WON");
