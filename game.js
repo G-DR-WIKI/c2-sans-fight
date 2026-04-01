@@ -28,5 +28,8 @@ setInterval(() => {
 	} else if (currScene === "MainMenu" && window.GS_B) {
 		console.log("GAME WON");
 		window.parent.postMessage({ evt: 'win' });
+		document.getElementById("c2canvasdiv").remove();
+	} else if (currScene === "MainMenu") {
+		window.location.reload();
 	}
 }, 500);
