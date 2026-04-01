@@ -44,7 +44,7 @@ setInterval(() => {
 		}
 	} else if (currScene === "MainMenu" && window.GS_B) {
 		console.log("GAME WON");
-		window.parent.postMessage({ evt: 'win', hp: GS_C });
+		window.parent.postMessage({ evt: 'win', hp: GS_C }, "*");
 		document.getElementById("c2canvasdiv").remove();
 	} else if (currScene === "MainMenu") {
 		window.location.reload();
