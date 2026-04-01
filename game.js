@@ -5,13 +5,14 @@ window.GS_N = false;
 
 function overrideName(runtime) {
 	const name = new URLSearchParams(window.location.search).get("name");
-	if (!name || GS_N) return;
+	if (!name || window.GS_N) return;
 
 	if (runtime) {
 		const nameVar = runtime.Gu?.find(a => a.name === "Name");
 		if (!nameVar) return;
 		nameVar.data = name;
 		nameVar.xm = name;
+		window.GS_N = true;
 	}
 }
 
